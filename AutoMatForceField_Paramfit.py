@@ -226,7 +226,7 @@ os.system("paramfit -i fit_K.in -p "+topol+" -c coord.crd -q qm_data.dat > K_fit
 
 
 ## Extraction of K_fitting value of paramfit
-K_val=float(os.popen("grep *K fit_K_A.out | tail -1 | awk '{print $3}' ").read())
+K_val=float(os.popen("grep *K K_fit.out | tail -1 | awk '{print $3}' ").read())
 print(K_val)
 ## writing scatterplot script from AMBERTOOLS ##
 with open('scatterplots.sh','w') as scatterplots:
@@ -410,3 +410,6 @@ print("")
 print("\n ----- the plots are ----- \n\n")
 os.system("chmod +x plt_energy.x")
 os.system("./plt_energy.x fit_output_energy.dat ")
+os.system(" mkdir Structures")
+os.system(" mv *.mol2 Structures")
+os.system(" mv *.xyz Structures")
